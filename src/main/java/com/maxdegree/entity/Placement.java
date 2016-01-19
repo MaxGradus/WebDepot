@@ -70,9 +70,3 @@ public class Placement {
     }
 
 }
-
-
-//final Long MONTH = 2592000000L;
-//Long today = new Date().getTime() + MONTH;
-//Date date  = new Date(today);
-

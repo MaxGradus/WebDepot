@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - web_depot_db@localhost" uuid="de99b2d1-e6a9-4969-b1f9-8571d9542447">
+    <database-info product="MySQL" version="5.5.23" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="web_depot_db"/>
+    <table name="placements" schema="" catalog="web_depot_db" type="TABLE">
+      <column name="placeId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="placeName" sqlType="VARCHAR" precision="64" scale="0" nullable="true" jdbcType="12"/>
+      <column name="price" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="placeId"/>
+      <foreign-key name="fk_place_constraint" columns="userId" ref-table="users" ref-schema="" ref-catalog="web_depot_db" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_place_index" unique="false" columns="userId"/>
+    </table>
+    <table name="user_roles" schema="" catalog="web_depot_db" type="TABLE">
+      <column name="USER_ROLE_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="AUTHORITY" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="USER_ROLE_ID"/>
+      <foreign-key name="FK_user_roles" columns="userId" ref-table="users" ref-schema="" ref-catalog="web_depot_db" ref-columns="userId" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_user_roles" unique="false" columns="userId"/>
+    </table>
+    <table name="users" schema="" catalog="web_depot_db" type="TABLE">
+      <column name="userId" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="login" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ENABLED" sqlType="TINYINT" precision="3" scale="0" nullable="true" jdbcType="-6" def="MQ=="/>
+      <primary-key name="PRIMARY" columns="userId"/>
+      <exported-key name="fk_place_constraint" table="placements" schema="" catalog="web_depot_db" columns="userId"/>
+      <exported-key name="FK_user_roles" table="user_roles" schema="" catalog="web_depot_db" columns="userId"/>
+    </table>
+  </data-source>
+</component>
